@@ -1,0 +1,39 @@
+.page {
+	margin: 0 auto;
+	font-family: "Inter", Arial, sans-serif;
+	background: #000;
+	-moz-osx-font-smoothing: grayscale;
+	-webkit-font-smoothing: antialiased;
+	-webkit-text-size-adjust: 100%;
+	-ms-text-size-adjust: 100%;
+	-moz-text-size-adjust: 100%;
+	text-rendering: optimizeLegibility;
+}
+
+.page__container {
+	max-width: 1280px;
+	min-width: 320px;
+	margin: 0 auto;
+}
+
+.header {
+	max-width: 880px;
+	margin: 0 auto;
+	padding-top: 45px;
+	border-bottom: 1px solid #545454;
+}
+
+.header__logo {
+	background-image: url(./images/logo.png);
+	width: 142px;
+	height: 33px;
+	background-size: contain;
+	background-repeat: no-repeat;
+	background-position: center;
+	transition: opacity 0.2s ease-in;
+	margin-bottom: 41px;
+}
+
+/*.header__logo:hover {
+	opacity: .8;
+}*/
