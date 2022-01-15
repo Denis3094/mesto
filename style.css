@@ -20,6 +20,7 @@
 	max-width: 880px;
 	margin: 0 auto;
 	padding-top: 45px;
+	padding-bottom: 41px;
 	border-bottom: 1px solid #545454;
 }
 
@@ -31,8 +32,8 @@
 	background-repeat: no-repeat;
 	background-position: center;
 	transition: opacity 0.2s ease-in;
-	margin-bottom: 41px;
 	cursor: pointer;
+	display: flex;
 }
 
 .header__logo:hover {
@@ -132,7 +133,6 @@
 	grid-template-columns: repeat(auto-fit, minmax(282px, 1fr));
 	grid-column-gap: 17px;
 	grid-row-gap: 20px;
-	
 }
 
 .cards__item {
@@ -172,4 +172,23 @@
 	background-size: cover;
 	background-repeat: no-repeat;
 	background-position: center;
+}
+
+.like {
+
+}
+
+.footer {
+	max-width: 880px;
+	margin: 0 auto;
+	padding-top: 66px;
+}
+
+.footer__text {
+	font-weight: 400;
+	font-size: 18px;
+	line-height: 1.22;
+	color: #545454;
+	display: flex;
+	justify-content: flex-start;
 }
