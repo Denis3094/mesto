@@ -36,9 +36,9 @@
 	display: flex;
 }
 
-.header__logo:hover {
+/*.header__logo:hover {
 	opacity: 0.9;
-}
+}*/
 
 .profile {
 	max-width: 880px;
@@ -86,11 +86,11 @@
 	transition: opacity 0.2s ease-in;
 }
 
-.button:hover {
+/*.button:hover {
 	opacity: 0.6;
-}
+}*/
 
-.button-edit {
+.button__edit {
 	background-image: url(./images/edit-btn.svg);
 	width: 24px;
 	height: 24px;
@@ -110,7 +110,7 @@
 	margin-top: 10px;
 }
 
-.button-add {
+.button__add {
 	background-image: url(./images/add-btn.svg);
 	width: 150px;
 	height: 50px;
@@ -162,18 +162,18 @@
 	font-size: 24px;
 	line-height: 1.2;
 	color: #000;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	overflow: hidden;
 }
 
-.button-like {
+.button__like {
 	background-image: url(./images/like.svg);
 	width: 22px;
 	height: 19px;
 	background-size: cover;
 	background-repeat: no-repeat;
 	background-position: center;
-}
-
-.like {
 }
 
 .footer {
