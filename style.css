@@ -79,7 +79,6 @@
 	font-size: 42px;
 	line-height: 1.14;
 	color: #fff;
-	max-width: 294px;
 }
 
 .button {
@@ -99,6 +98,7 @@
 	background-repeat: no-repeat;
 	background-position: center;
 	margin-left: 18px;
+	margin-top: 6px;
 }
 
 .profile__subtitle {
@@ -107,8 +107,7 @@
 	font-size: 18px;
 	line-height: 1.22;
 	color: #fff;
-	grid-area: subtitle;
-	margin-top: 16px;
+	margin-top: 10px;
 }
 
 .button-add {
@@ -175,7 +174,6 @@
 }
 
 .like {
-
 }
 
 .footer {
