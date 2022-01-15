@@ -6,3 +6,10 @@
 	color: #fff;
 	margin-top: 10px;
 }
+
+@media screen and (max-width: 767px) {
+	.profile__subtitle {
+		margin: 0 auto;
+		margin-top: 8px;
+	}
+}

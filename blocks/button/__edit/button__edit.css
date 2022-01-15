@@ -8,3 +8,12 @@
 	margin-left: 18px;
 	margin-top: 6px;
 }
+
+@media screen and (max-width: 767px) {
+	.button__edit {
+		width: 18px;
+		height: 18px;
+		margin-left: 10px;
+		margin-top: 1px;
+	}
+}

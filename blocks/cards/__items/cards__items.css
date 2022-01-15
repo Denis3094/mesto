@@ -3,7 +3,21 @@
 	padding: 0;
 	margin: 0;
 	display: grid;
-	grid-template-columns: repeat(auto-fit, minmax(282px, 1fr));
+	justify-content: center;
+	grid-template-columns: repeat(3, 1fr);
+	grid-auto-rows: 361px;
 	grid-column-gap: 17px;
 	grid-row-gap: 20px;
+}
+
+@media screen and (max-width: 767px) {
+	.cards__items {
+		grid-template-columns: repeat(2, 1fr);
+	}
+}
+
+@media screen and (max-width: 500px) {
+	.cards__items {
+		grid-template-columns: repeat(1, 1fr);
+	}
 }

@@ -2,14 +2,28 @@
 	background-image: url(../../../images/logo.png);
 	max-width: 142px;
 	min-height: 33px;
-	background-size: contain;
+	background-size: cover;
 	background-repeat: no-repeat;
 	background-position: center;
 	transition: opacity 0.2s ease-in;
 	cursor: pointer;
 	display: flex;
+	justify-content: flex-start;
 }
 
 .header__logo:hover {
-	opacity: .9;
+	opacity: 0.9;
+}
+
+@media screen and (max-width: 1023px) {
+	.header__logo {
+		margin-left: 27px;
+	}
+}
+
+@media screen and (max-width: 767px) {
+	.header__logo {
+		max-width: 103px;
+		min-height: 24px;
+	}
 }

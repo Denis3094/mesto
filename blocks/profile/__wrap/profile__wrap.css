@@ -3,3 +3,9 @@
 	align-items: center;
 	flex-wrap: wrap;
 }
+
+@media screen and (max-width: 767px) {
+	.profile__wrap {
+		flex-direction: column;
+	}
+}
