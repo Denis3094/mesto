@@ -1,4 +1,14 @@
 .profile__name {
-	display: flex;
-	align-items: center;
+	margin: 0;
+	font-weight: 500;
+	font-size: 42px;
+	line-height: 1.14;
+	color: #fff;
+}
+
+@media screen and (max-width: 767px) {
+	.profile__name {
+		font-size: 27px;
+		line-height: 1.22;
+	}
 }

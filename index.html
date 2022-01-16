@@ -21,11 +21,11 @@
 				<div class="profile__wrap">
 					<img class="profile__avatar" src="./images/avatar.jpg" alt="аватар">
 					<div class="profile__info">
-						<div class="profile__name">
-							<h1 class="profile__title">Жак-Ив Кусто</h1>
+						<div class="profile__title">
+							<h1 class="profile__name">Жак-Ив Кусто</h1>
 							<a href="#" class="button button__edit"></a>
 						</div>
-						<p class="profile__subtitle">Исследователь океана</p>
+						<p class="profile__job">Исследователь океана</p>
 					</div>
 				</div>
 				<a href="#" class="button button__add"></a>
@@ -81,17 +81,18 @@
 		<footer class="footer">
 			<p class="footer__text">&copy; 2020 Mesto Russia</p>
 		</footer>
-		<div class="popup popup_opened">
+		<div class="popup">
 			<div class="popup__container">
 				<a href="#" class="button button__close">
 					<img class="button__close-img" src="./images/close.svg" alt="закрыть попап">
 				</a>
 				<h2 class="popup__title">Редактировать профиль</h2>
-				<div class="popup__form">
-					<input type="text" class="popup__input" placeholder="Имя">
-					<input type="text" class="popup__input" placeholder="О себе">
-				</div>
-				<button href="#" class="popup__button">Сохранить</button>
+				<form class="popup__form">
+					<input type="text" class="popup__form-input popup__form-input_name" placeholder="Имя" value="Жак-Ив Кусто">
+					<input type="text" class="popup__form-input popup__form-input_job" placeholder="О себе"
+						value="Исследователь океана">
+					<button href="#" class="popup__button">Сохранить</button>
+				</form>
 			</div>
 		</div>
 	</div>
