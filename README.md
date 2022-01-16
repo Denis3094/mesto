@@ -22,4 +22,4 @@
 
 #### Ссылка на Github pages:
 
-https://denis3094.github.io/russian-travel/
+https://denis3094.github.io/mesto/
