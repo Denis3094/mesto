@@ -1,11 +1,11 @@
-.button__add {
+.profile__button-add {
 	width: 150px;
 	height: 50px;
 	border: 2px solid #fff;
 	position: relative;
 }
 
-.button__add::after {
+.profile__button-add::after {
 	content: "";
 	background-image: url(../../../images/plus-btn.svg);
 	width: 22px;
@@ -19,7 +19,7 @@
 }
 
 @media screen and (max-width: 767px) {
-	.button__add {
+	.profile__button-add {
 		width: 100%;
 		margin-top: 36px;
 	}
