@@ -6,4 +6,6 @@
 	align-items: center;
 	border-bottom-left-radius: 10px;
 	border-bottom-right-radius: 10px;
+	box-sizing: border-box;
+	height: 79px;
 }

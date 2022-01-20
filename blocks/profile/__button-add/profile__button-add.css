@@ -4,6 +4,7 @@
 	border: 2px solid #fff;
 	position: relative;
 	box-sizing: border-box;
+	border-radius: 2px;
 }
 
 .profile__button-add::after {

@@ -23,55 +23,55 @@
 					<div class="profile__info">
 						<div class="profile__title">
 							<h1 class="profile__name">Жак-Ив Кусто</h1>
-							<a href="#" class="button profile__button-edit"></a>
+							<button class="button profile__button-edit" type="button" aria-label="редактировать"></button>
 						</div>
 						<p class="profile__job">Исследователь океана</p>
 					</div>
 				</div>
-				<a href="#" class="button profile__button-add"></a>
+				<button class="button profile__button-add" type="button" aria-label="добавить"></button>
 			</section>
 			<section class="cards">
 				<ul class="cards__items">
 					<li class="cards__item">
 						<img class="cards__img" src="./images/amsterdam.jpg" alt="амстердам">
 						<div class="cards__desc">
-							<p class="cards__title">Амстердам</p>
-							<a href="#" class="button cards__button-like"></a>
+							<h2 class="cards__title">Амстердам</h2>
+							<button class="button cards__button-like" type="button" aria-label="нравится"></button>
 						</div>
 					</li>
 					<li class="cards__item">
 						<img class="cards__img" src="./images/london.jpg" alt="лондон">
 						<div class="cards__desc">
-							<p class="cards__title">Лондон</p>
-							<a href="#" class="button cards__button-like"></a>
+							<h2 class="cards__title">Лондон</h2>
+							<button class="button cards__button-like" type="button" aria-label="нравится"></button>
 						</div>
 					</li>
 					<li class="cards__item">
 						<img class="cards__img" src="./images/barcelona.jpg" alt="барселона">
 						<div class="cards__desc">
-							<p class="cards__title">Барселона</p>
-							<a href="#" class="button cards__button-like"></a>
+							<h2 class="cards__title">Барселона</h2>
+							<button class="button cards__button-like" type="button" aria-label="нравится"></button>
 						</div>
 					</li>
 					<li class="cards__item">
 						<img class="cards__img" src="./images/pattaya.jpg" alt="паттайя">
 						<div class="cards__desc">
-							<p class="cards__title">Паттайя</p>
-							<a href="#" class="button cards__button-like"></a>
+							<h2 class="cards__title">Паттайя</h2>
+							<button class="button cards__button-like" type="button" aria-label="нравится"></button>
 						</div>
 					</li>
 					<li class="cards__item">
 						<img class="cards__img" src="./images/maldives.jpg" alt="мальдивы">
 						<div class="cards__desc">
-							<p class="cards__title">Мальдивы</p>
-							<a href="#" class="button cards__button-like"></a>
+							<h2 class="cards__title">Мальдивы</h2>
+							<button class="button cards__button-like" type="button" aria-label="нравится"></button>
 						</div>
 					</li>
 					<li class="cards__item">
 						<img class="cards__img" src="./images/tel-aviv.jpg" alt="тель-авив">
 						<div class="cards__desc">
-							<p class="cards__title">Тель-Авив</p>
-							<a href="#" class="button cards__button-like"></a>
+							<h2 class="cards__title">Тель-Авив</h2>
+							<button class="button cards__button-like" type="button" aria-label="нравится"></button>
 						</div>
 					</li>
 				</ul>
@@ -83,16 +83,14 @@
 		</footer>
 		<div class="popup">
 			<div class="popup__container">
-				<a href="#" class="button popup__close">
+				<button class="button popup__close" type="button" aria-label="закрыть">
 					<img class="popup__close-img" src="./images/close.svg" alt="закрыть попап">
-				</a>
+				</button>
 				<h2 class="popup__title">Редактировать профиль</h2>
-				<form class="popup__form">
-					<input type="text" class="popup__form-input popup__form-input_name" placeholder="Имя"
-						value="Жак-Ив Кусто">
-					<input type="text" class="popup__form-input popup__form-input_job" placeholder="О себе"
-						value="Исследователь океана">
-					<button class="popup__button">Сохранить</button>
+				<form class="popup__form" name="popup_form">
+					<input type="text" class="popup__form_input popup__form_input_name" placeholder="Имя" name="name">
+					<input type="text" class="popup__form_input popup__form_input_job" placeholder="О себе" name="about_me">
+					<button class="popup__button" type="submit" aria-label="сохранить">Сохранить</button>
 				</form>
 			</div>
 		</div>
