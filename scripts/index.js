@@ -17,9 +17,13 @@ function openPopup() {
 	jobInput.value = profileJob.textContent;
 }
 
-function closePopup() {
+function closePopup(event) {
 	popup.classList.remove('popup_opened');
+	if (event.target === event.currentTarget) {
+		closePopup();
+	}
 }
+
 
 // Обработчик «отправки» формы, хотя пока
 // она никуда отправляться не будет
@@ -27,7 +31,6 @@ function formSubmitHandler(evt) {
 	evt.preventDefault(); // Эта строчка отменяет стандартную отправку формы.
 	// Так мы можем определить свою логику отправки.
 	// О том, как это делать, расскажем позже.
-
 	// Получите значение полей jobInput и nameInput из свойства value
 	console.log(nameInput.value);
 	console.log(jobInput.value);
@@ -41,11 +44,7 @@ function formSubmitHandler(evt) {
 
 editBtn.addEventListener('click', openPopup);
 closeBtn.addEventListener('click', closePopup);
-popup.addEventListener('click', function (event) {
-	if (event.target === event.currentTarget) {
-		closePopup();
-	}
-});
+popup.addEventListener('click', closePopup);
 // Прикрепляем обработчик к форме:
 // он будет следить за событием “submit” - «отправка»
 formElement.addEventListener('submit', formSubmitHandler);
