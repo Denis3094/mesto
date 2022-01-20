@@ -3,8 +3,8 @@
 	height: 50px;
 	border: 2px solid #fff;
 	position: relative;
-	box-sizing: border-box;
 	border-radius: 2px;
+	box-sizing: border-box;
 }
 
 .profile__button-add::after {

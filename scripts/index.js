@@ -19,9 +19,6 @@ function openPopup() {
 
 function closePopup(event) {
 	popup.classList.remove('popup_opened');
-	if (event.target === event.currentTarget) {
-		closePopup();
-	}
 }
 
 
@@ -44,7 +41,11 @@ function formSubmitHandler(evt) {
 
 editBtn.addEventListener('click', openPopup);
 closeBtn.addEventListener('click', closePopup);
-popup.addEventListener('click', closePopup);
+popup.addEventListener('click', function (event) {
+	if (event.target === event.currentTarget) {
+		closePopup();
+	}
+});
 // Прикрепляем обработчик к форме:
 // он будет следить за событием “submit” - «отправка»
 formElement.addEventListener('submit', formSubmitHandler);

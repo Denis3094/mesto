@@ -7,3 +7,10 @@
 	display: flex;
 	justify-content: flex-start;
 }
+
+@media screen and (max-width: 767px) {
+	.footer__text {
+		font-size: 14px;
+		line-height: 1.21;
+	}
+}
