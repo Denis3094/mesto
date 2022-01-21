@@ -1,11 +1,14 @@
 .profile__wrap {
-	display: flex;
+	display: grid;
+	grid-template-columns: repeat(2, minmax(120px, auto));
 	align-items: center;
-	flex-wrap: wrap;
+	column-gap: 30px;
 }
 
 @media screen and (max-width: 767px) {
 	.profile__wrap {
-		flex-direction: column;
+		grid-template-columns: 1fr;
+		justify-items: center;
+		row-gap: 26px;
 	}
 }
