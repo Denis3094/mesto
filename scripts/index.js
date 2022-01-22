@@ -8,6 +8,7 @@ let jobInput = document.querySelector('.popup__input_job');
 let profileName = document.querySelector('.profile__name');
 let profileJob = document.querySelector('.profile__job');
 
+
 //Функция открыть попап
 function openPopup() {
 	popup.classList.add('popup_opened');
@@ -18,13 +19,12 @@ function openPopup() {
 function closePopup() {
 	popup.classList.remove('popup_opened');
 }
-//Функция закрыть попап при клике в любом месте
+//Функция закрыть попап при клике в любом месте и клавишей Escape
 function closePopupAnywhere(event) {
-	if (event.target === event.currentTarget) {
+	if (event.target === event.currentTarget || (event.code === 'Escape')) {
 		closePopup();
 	}
 }
-
 // Обработчик «отправки» формы, хотя пока
 // она никуда отправляться не будет
 function formSubmitHandler(evt) {
@@ -45,6 +45,7 @@ function formSubmitHandler(evt) {
 editBtn.addEventListener('click', openPopup);
 closeBtn.addEventListener('click', closePopup);
 popup.addEventListener('click', closePopupAnywhere);
+document.addEventListener('keyup', closePopupAnywhere);
 // Прикрепляем обработчик к форме:
 // он будет следить за событием “submit” - «отправка»
 formElement.addEventListener('submit', formSubmitHandler);
