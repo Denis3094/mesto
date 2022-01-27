@@ -38,9 +38,10 @@
 		<footer class="footer">
 			<p class="footer__text">&copy; 2020 Mesto Russia</p>
 		</footer>
-		<div class="popup">
-			<div class="popup__container">
-				<button class="button popup__close" type="button" aria-label="закрыть">
+
+		<div class="popup popup_edit">
+			<div class="popup__container ">
+				<button class="button popup__close popup__close_edit_profile" type="button" aria-label="закрыть">
 					<img class="popup__close-img" src="./images/close.svg" alt="закрыть попап">
 				</button>
 				<h2 class="popup__title">Редактировать профиль</h2>
@@ -48,6 +49,20 @@
 					<input type="text" class="popup__input popup__input_type_name" placeholder="Имя" name="name">
 					<input type="text" class="popup__input popup__input_type_job" placeholder="О себе" name="about_me">
 					<button class="popup__button" type="submit" aria-label="сохранить">Сохранить</button>
+				</form>
+			</div>
+		</div>
+
+		<div class="popup popup_add">
+			<div class="popup__container ">
+				<button class="button popup__close popup__close_add_cards" type="button" aria-label="закрыть">
+					<img class="popup__close-img" src="./images/close.svg" alt="закрыть попап">
+				</button>
+				<h2 class="popup__title">Новое место</h2>
+				<form class="popup__form" name="popup_form">
+					<input type="text" class="popup__input popup__input_type_name" placeholder="Название" name="title">
+					<input type="text" class="popup__input popup__input_type_job" placeholder="Ссылка на картинку" name="image_link">
+					<button class="popup__button" type="submit" aria-label="сохранить">Создать</button>
 				</form>
 			</div>
 		</div>
@@ -62,6 +77,7 @@
 			</div>
 		</li>
 	</template>
+	<script src="./scripts/initial-cards.js"></script>
 	<script src="./scripts/index.js"></script>
 </body>
 
