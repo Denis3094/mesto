@@ -24,6 +24,13 @@ function openPopup(popup) {
 	popup.classList.add('popup_opened');
 }
 
+
+//Функция закрыть попап универсальная
+function closePopup(popup) {
+	popup.classList.remove('popup_opened');
+}
+
+
 //Функция открыть попап редактирования профиля
 function editProfileOpenPopupHandler() {
 	openPopup(popupEditProfile);
@@ -31,10 +38,6 @@ function editProfileOpenPopupHandler() {
 	jobInput.value = profileJob.textContent;
 }
 
-//Функция закрыть попап универсальная
-function closePopup(popup) {
-	popup.classList.remove('popup_opened');
-}
 
 //Функция закрыть попап редактирования профиля
 function editProfileClosePopupHandler() {
@@ -45,6 +48,7 @@ function editProfileClosePopupHandler() {
 function addCardOpenPopupHandler() {
 	openPopup(popupAddCard);
 }
+
 
 //Функция закрыть попап добавления карточек
 function addCardClosePopupHandler() {
@@ -67,33 +71,51 @@ function formEditProfileSubmitHandler(evt) {
 }
 
 
-function formAddCardSubmitHandler(evt) {
-	evt.preventDefault(); // Эта строчка отменяет стандартную отправку формы.
-	// Так мы можем определить свою логику отправки.
-	// О том, как это делать, расскажем позже.
-	// Получите значение полей jobInput и nameInput из свойства value
-	// Выберите элементы, куда должны быть вставлены значения полей
-	// Вставьте новые значения с помощью textContent
+//Функция добавления карточек из массива
+function render() {
+	initialCards.forEach(renderItem);
+}
+
+//Функция добавления карточек
+function renderItem(item) {
+	const newItem = cardsTemplate.cloneNode(true);
+
+	newItem.querySelector('.cards__title').textContent = item.name;
+	newItem.querySelector('.cards__img').src = item.link;
+	newItem.querySelector('.cards__img').setAttribute('alt', `${item.name}`);
+	newItem.querySelector('.cards__button-like').addEventListener('click', likeCard); // Лайк для карточек
+	newItem.querySelector('.cards__button-remove').addEventListener('click', deleteCard); // Удаление карточек
+
+	cardsItems.prepend(newItem);
+}
+
+
+//Функция добавления карточек пользователем
+function addItem(evt) {
+	evt.preventDefault();
+	renderItem({
+		name: titleInput.value,
+		link: linkInput.value
+	});
+	titleInput.value = '';
+	linkInput.value = '';
 	closePopup(popupAddCard);
 }
 
 
-///Функция добавления карточек на страницу из массива
-initialCards.forEach(function (element) {
+//Функция лайка для карточек
+function likeCard(evt) {
+	evt.target.classList.toggle('cards__button-like_active');
+}
 
-	const cardElement = cardsTemplate.cloneNode(true);
 
-	cardElement.querySelector('.cards__title').textContent = element.name;
-	cardElement.querySelector('.cards__img').src = element.link;
-	cardElement.querySelector('.cards__img').setAttribute('alt', `${element.name}`);
+//Функция удаления карточек
+function deleteCard(evt) {
+	evt.target.closest('.cards__item').remove();
+}
 
-	///Лайк карточек на странице
-	cardElement.querySelector('.cards__button-like').addEventListener('click', function (evt) {
-		evt.target.classList.toggle('cards__button-like_active');
-	});
 
-	cardsItems.append(cardElement);
-});
+render();
 
 
 
@@ -104,4 +126,4 @@ closeBtnAddCard.addEventListener('click', addCardClosePopupHandler);
 // Прикрепляем обработчик к форме:
 // он будет следить за событием “submit” - «отправка»
 formEditProfile.addEventListener('submit', formEditProfileSubmitHandler);
-formaddCard.addEventListener('submit', formAddCardSubmitHandler);
+formaddCard.addEventListener('submit', addItem);

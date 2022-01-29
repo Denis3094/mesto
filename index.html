@@ -63,7 +63,7 @@
 					<input type="text" class="popup__input popup__input_type_title" placeholder="Название" name="title">
 					<input type="text" class="popup__input popup__input_type_link" placeholder="Ссылка на картинку"
 						name="image_link">
-					<button class="popup__button" type="submit" aria-label="сохранить">Создать</button>
+					<button class="popup__button popup__button_make" type="submit" aria-label="сохранить">Создать</button>
 				</form>
 			</div>
 		</div>
@@ -71,6 +71,7 @@
 
 	<template class="cards-template">
 		<li class="cards__item">
+			<button class="button cards__button-remove" type="button" aria-label="удалить"></button>
 			<img class="cards__img" src="" alt="">
 			<div class="cards__desc">
 				<h2 class="cards__title"></h2>
