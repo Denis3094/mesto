@@ -39,7 +39,7 @@
 			<p class="footer__text">&copy; 2020 Mesto Russia</p>
 		</footer>
 
-		<div class="popup popup_edit-profile">
+		<section class="popup popup_edit-profile">
 			<div class="popup__container ">
 				<button class="button popup__close popup__close_edit-profile" type="button" aria-label="закрыть">
 					<img class="popup__close-img" src="./images/close.svg" alt="закрыть попап">
@@ -51,9 +51,9 @@
 					<button class="popup__button" type="submit" aria-label="сохранить">Сохранить</button>
 				</form>
 			</div>
-		</div>
+		</section>
 
-		<div class="popup popup_add-card">
+		<section class="popup popup_add-card">
 			<div class="popup__container ">
 				<button class="button popup__close popup__close_add-card" type="button" aria-label="закрыть">
 					<img class="popup__close-img" src="./images/close.svg" alt="закрыть попап">
@@ -66,8 +66,18 @@
 					<button class="popup__button popup__button_make" type="submit" aria-label="сохранить">Создать</button>
 				</form>
 			</div>
-		</div>
+		</section>
 	</div>
+
+	<section class="popup popup_pic">
+		<div class="popup__pic-container">
+			<button class="button popup__close popup__close_pic" type="button" aria-label="закрыть">
+				<img class="popup__close-img" src="./images/close.svg" alt="закрыть попап">
+			</button>
+			<img class="popup__photo" src="" alt="">
+			<p class="popup__photo-title"></p>
+		</div>
+	</section>
 
 	<template class="cards-template">
 		<li class="cards__item">
