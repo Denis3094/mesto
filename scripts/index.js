@@ -15,12 +15,13 @@ const formEditProfile = body.querySelector('.popup__form_edit-profile');
 function openPopup(popup) {
     popup.classList.add('popup_opened');
     body.addEventListener('keydown', closePopupEscape);
-    body.addEventListener('click', closePopupEscape);
+    body.addEventListener('click', closePopupOverlay);
 }
 
 //Функция закрыть попап универсальная
 function closePopup(popup) {
     popup.classList.remove('popup_opened');
+    body.removeEventListener('keydown', closePopupEscape);
 }
 
 //Функция закрыть попап кнопкой 'Escape' и кликом на Overlay универсальная
@@ -29,11 +30,15 @@ function closePopupEscape(evt) {
     if (evt.code === 'Escape') {
         closePopup(popupOpened);
     }
+}
+
+//Функция закрыть попап кликом на Overlay универсальная
+function closePopupOverlay(evt) {
+    const popupOpened = document.querySelector('.popup_opened');
     if (evt.target.classList.contains("popup_opened")) {
         closePopup(popupOpened);
     }
 }
-
 
 //Функция открыть попап редактирования профиля
 function openEditProfilePopup() {
