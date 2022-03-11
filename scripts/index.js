@@ -110,10 +110,14 @@ const openOpenPicPopup = (name, link) => {
     openPopup(popupOpenPic);
 }
 
+const prependCard = (cardElement) => {
+    cardItems.prepend(cardElement);
+}
+
 const renderCard = (data) => {
     const card = new Card(data, '.cards-template', openOpenPicPopup);
     const cardElement = card.createCard();
-    cardItems.prepend(cardElement);
+    prependCard(cardElement);
 }
 
 initialCards.forEach(renderCard);

@@ -11,8 +11,7 @@ export class Card {
     }
 
     _deleteCard = () => {
-        const cardItem = document.querySelector('.cards__item');
-        cardItem.remove();
+        this._cardElement.remove();
     }
 
     _setEventListeners() {
@@ -32,7 +31,8 @@ export class Card {
     }
 
     createCard() {
-        this._cardElement = this._cardTemplate.cloneNode(true);
+        //Спасибо! Тупанул на этой строчке :) Думал еще почему с this._cardElement не работало удаление)
+        this._cardElement = this._cardTemplate.querySelector('.cards__item').cloneNode(true);
         this._cardImg = this._cardElement.querySelector('.cards__img');
         this._cardLikeBtn = this._cardElement.querySelector('.cards__button-like');
 
