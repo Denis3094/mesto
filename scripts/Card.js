@@ -1,46 +1,42 @@
-import {popupOpenPic ,popupOpenPicImg, popupOpenPicTitle, openPopup} from './utils.js';
-
 export class Card {
-    constructor(data, cardTemplateSelector) {
+    constructor(data, cardTemplateSelector, handleCardClick) {
         this._cardTemplate = document.querySelector(cardTemplateSelector).content;
         this._name = data.name;
         this._link = data.link;
+        this._handleCardClick = handleCardClick;
     }
 
-    likeCard = () => {
+    _likeCard = () => {
         this._cardLikeBtn.classList.toggle('cards__button-like_active');
     }
 
-    deleteCard = () => {
-        this._cardElement.remove();
+    _deleteCard = () => {
+        const cardItem = document.querySelector('.cards__item');
+        cardItem.remove();
     }
 
-    openOpenPicPopup = () => {
-        popupOpenPicImg.src = this._link;
-        popupOpenPicImg.alt = `Изображение ${this._name}`;
-        popupOpenPicTitle.textContent = this._name;
-        openPopup(popupOpenPic);
-    }
-
-    _setEventListeners () {
+    _setEventListeners() {
         const cardDeleteBtn = this._cardElement.querySelector('.cards__button-remove');
-        this._cardLikeBtn.addEventListener('click', likeCard);
-        cardDeleteBtn.addEventListener('click', deleteCard);
-        this._cardImg.addEventListener('click', () => openOpenPicPopup);
+
+        this._cardLikeBtn.addEventListener('click', this._likeCard);
+        cardDeleteBtn.addEventListener('click', this._deleteCard);
+        this._cardImg.addEventListener('click', () => this._handleCardClick(this._name, this._link));
+    }
+
+    _fillCard() {
+        const cardTitle = this._cardElement.querySelector('.cards__title');
+
+        this._cardImg.src = this._link;
+        this._cardImg.alt = this._name;
+        cardTitle.textContent = this._name;
     }
 
     createCard() {
-        this._cardElement =  this._cardTemplate.cloneNode(true);
-        const cardTitle = this._cardElement.querySelector('.cards__title');
+        this._cardElement = this._cardTemplate.cloneNode(true);
         this._cardImg = this._cardElement.querySelector('.cards__img');
         this._cardLikeBtn = this._cardElement.querySelector('.cards__button-like');
 
-
-
-        this._cardImg.src = this._link;
-        this._cardImg.alt =  this._name;
-        cardTitle.textContent =  this._name;
-
+        this._fillCard();
         this._setEventListeners();
 
         return this._cardElement;

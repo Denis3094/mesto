@@ -1,7 +1,6 @@
-import {openPopup, closePopup} from './utils.js';
+import {initialCards} from './initialCards.js';
 import {FormValidator} from './FormValidator.js';
 import {Card} from './Card.js';
-
 
 const configValidate = {
     formSelector: '.popup__form',
@@ -26,9 +25,10 @@ const addBtn = document.querySelector('.profile__button-add');
 const formAddCard = document.querySelector('.popup__form_add-card');
 const titleInput = document.querySelector('.popup__input_type_title');
 const linkInput = document.querySelector('.popup__input_type_link');
-
 const cardItems = document.querySelector('.cards__items');
-const cardTemplate = document.querySelector('.cards-template').content;
+const popupOpenPic = document.querySelector('.popup_pic');
+const popupOpenPicImg = popupOpenPic.querySelector('.popup__photo');
+const popupOpenPicTitle = popupOpenPic.querySelector('.popup__photo-title');
 
 const editProfileValidator = new FormValidator(configValidate, formEditProfile);
 const addCardValidator = new FormValidator(configValidate, formAddCard);
@@ -36,6 +36,25 @@ const addCardValidator = new FormValidator(configValidate, formAddCard);
 editProfileValidator.enableValidation();
 addCardValidator.enableValidation();
 
+//Функция закрыть попап универсальная
+function closePopup(popup) {
+    popup.classList.remove('popup_opened');
+    document.removeEventListener('keydown', closePopupEscape);
+}
+
+//Функция закрыть попап кнопкой 'Escape' универсальная
+function closePopupEscape(evt) {
+    if (evt.code === 'Escape') {
+        const popupOpened = document.querySelector('.popup_opened');
+        closePopup(popupOpened);
+    }
+}
+
+//Функция открыть попап универсальная
+function openPopup(popup) {
+    popup.classList.add('popup_opened');
+    document.addEventListener('keydown', closePopupEscape);
+}
 
 //Перебираем все попапы на странице и привязываем закрытие на кнопку крестик и по Overlay
 popups.forEach((popup) => {
@@ -84,17 +103,20 @@ function openAddCardPopup() {
     openPopup(popupAddCard);
 }
 
-
+const openOpenPicPopup = (name, link) => {
+    popupOpenPicImg.src = link;
+    popupOpenPicImg.alt = `Изображение ${name}`;
+    popupOpenPicTitle.textContent = name;
+    openPopup(popupOpenPic);
+}
 
 const renderCard = (data) => {
-    const card = new Card(data);
+    const card = new Card(data, '.cards-template', openOpenPicPopup);
     const cardElement = card.createCard();
     cardItems.prepend(cardElement);
 }
 
 initialCards.forEach(renderCard);
-
-
 
 function addCard(evt) {
     evt.preventDefault();
