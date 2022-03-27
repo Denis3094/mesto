@@ -8,7 +8,6 @@ import {
     formEditProfile,
     addBtn,
     formAddCard,
-    cardItems
 } from "../utils/constants.js";
 import {FormValidator} from "../components/FormValidator.js";
 import {Card} from "../components/Card.js";
@@ -30,8 +29,8 @@ function openEditProfilePopup() {
 
 //Функция редактирования профиля
 function submitEditProfile(data) {
-    const {name, about_me} = data;
-    userInfo.setUserInfo(name, about_me);
+    const {name, aboutMe} = data;
+    userInfo.setUserInfo(name, aboutMe);
     editProfilePopup.close();
 }
 
@@ -44,7 +43,7 @@ function openAddCardPopup() {
 
 //Функция вставки карточек
 const prependCard = (cardElement) => {
-    cardItems.prepend(cardElement);
+    section.addItem(cardElement);
 }
 
 //Функция создания карточек
@@ -57,28 +56,16 @@ const createCard = (data) => {
     return cardElement;
 }
 
-//Функция рендера карточек
-const renderCard = (data) => {
-    prependCard(createCard(data));
-}
-
-
-//Слушатели кнопок модалок
-editBtn.addEventListener('click', openEditProfilePopup);
-addBtn.addEventListener('click', openAddCardPopup);
-
-
 //Валидация модалок
 const editProfileValidator = new FormValidator(configValidate, formEditProfile);
 const addCardValidator = new FormValidator(configValidate, formAddCard);
 
-editProfileValidator.enableValidation();
-addCardValidator.enableValidation();
-
 //Рендер карточек на странице
-const section = new Section({items: initialCards, renderer: renderCard}, '.cards__items');
-
-section.renderItems();
+const section = new Section({
+    items: initialCards, renderer: (data) => {
+        section.addItem(createCard(data));
+    }
+}, '.cards__items');
 
 //Привязка модалок
 const imagePopup = new PopupWithImage('.popup_pic');
@@ -88,12 +75,17 @@ const addCardPopup = new PopupWithForm('.popup_add-card', (data) => {
 });
 const editProfilePopup = new PopupWithForm('.popup_edit-profile', submitEditProfile);
 
-imagePopup.setEventListeners();
-addCardPopup.setEventListeners();
-editProfilePopup.setEventListeners();
-
 //Заполнение информации профиля
 const userInfo = new UserInfo({profileNameSelector: '.profile__name', profileJobSelector: '.profile__job'});
 
 
+//Обработчики
+editProfileValidator.enableValidation();
+addCardValidator.enableValidation();
+section.renderItems();
+imagePopup.setEventListeners();
+addCardPopup.setEventListeners();
+editProfilePopup.setEventListeners();
+editBtn.addEventListener('click', openEditProfilePopup);
+addBtn.addEventListener('click', openAddCardPopup);
 
