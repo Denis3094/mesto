@@ -41,11 +41,6 @@ function openAddCardPopup() {
     addCardPopup.open();
 }
 
-//Функция вставки карточек
-const prependCard = (cardElement) => {
-    section.addItem(cardElement);
-}
-
 //Функция создания карточек
 const createCard = (data) => {
     const card = new Card(data, '.cards-template', () => {
