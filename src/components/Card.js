@@ -1,9 +1,13 @@
+import {api} from "./Api";
+
 export class Card {
-    constructor(data, cardTemplateSelector, handleCardClick) {
+    constructor(data, cardTemplateSelector, handleCardClick, handleDeleteClick) {
         this._cardTemplate = document.querySelector(cardTemplateSelector).content;
         this._name = data.name;
         this._link = data.link;
+        // this._likes = data.likes;
         this._handleCardClick = handleCardClick;
+        this._handleDeleteClick = handleDeleteClick;
     }
 
     _likeCard = () => {
@@ -11,7 +15,8 @@ export class Card {
     }
 
     _deleteCard = () => {
-        this._cardElement.remove();
+        // this._cardElement.remove();
+        this._handleDeleteClick();
     }
 
     _getTemplate() {
@@ -37,11 +42,17 @@ export class Card {
         cardTitle.textContent = this._name;
     }
 
+    // _setLikes() {
+    //     const likeCountElement = this._cardElement.querySelector('.cards__like-count');
+    //     likeCountElement.textContent = this._likes.length;
+    // }
+
     createCard() {
         this._cardElement = this._getTemplate()
 
         this._fillCard();
         this._setEventListeners();
+        // this._setLikes();
         return this._cardElement;
     }
 }

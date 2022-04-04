@@ -15,14 +15,28 @@ import {Section} from "../components/Section.js";
 import {PopupWithImage} from "../components/PopupWithImage.js";
 import {PopupWithForm} from "../components/PopupWithForm.js";
 import {UserInfo} from "../components/UserInfo.js";
+import {api} from "../components/Api.js";
+
+api.getProfile()
+    .then(res => {
+        console.log('Ответ', res)
+        userInfo.setUserInfo(res.name, res.about)
+    })
+
+api.getInitialCards()
+    .then(res => {
+        console.log(res)
+        const data = res.map(data => data.name)
+        console.log(data)
+    })
 
 
 //Функция открыть попап редактирования профиля
 function openEditProfilePopup() {
     editProfileValidator.resetErrors();
-    const {name, job} = userInfo.getUserInfo();
+    const {name, about} = userInfo.getUserInfo();
     nameInput.value = name;
-    jobInput.value = job;
+    jobInput.value = about;
     editProfileValidator.toggleButtonState();
     editProfilePopup.open();
 }
@@ -30,7 +44,11 @@ function openEditProfilePopup() {
 //Функция редактирования профиля
 function submitEditProfile(data) {
     const {name, aboutMe} = data;
-    userInfo.setUserInfo(name, aboutMe);
+
+    api.editProfile(name, aboutMe)
+        .then(() => {
+            userInfo.setUserInfo(name, aboutMe);
+        })
     editProfilePopup.close();
 }
 
@@ -55,7 +73,7 @@ const createCard = (data) => {
 const editProfileValidator = new FormValidator(configValidate, formEditProfile);
 const addCardValidator = new FormValidator(configValidate, formAddCard);
 
-//Рендер карточек на странице
+// Рендер карточек на странице
 const section = new Section({
     items: initialCards, renderer: (data) => {
         section.addItem(createCard(data));

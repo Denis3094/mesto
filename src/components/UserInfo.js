@@ -7,12 +7,12 @@ export class UserInfo {
     getUserInfo() {
         return {
             name: this._nameElement.textContent,
-            job: this._jobElement.textContent,
+            about: this._jobElement.textContent,
         }
     }
 
-    setUserInfo(title, job) {
+    setUserInfo(title, about) {
         this._nameElement.textContent = title
-        this._jobElement.textContent = job
+        this._jobElement.textContent = about
     }
 }
