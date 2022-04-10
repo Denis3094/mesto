@@ -13,9 +13,9 @@ export class Card {
     }
 
     isLiked() {
-        const userHasLikesCard = this._likes.find(user => user._id === this._userId)
+        this._userHasLikesCard = this._likes.find(user => user._id === this._userId)
 
-        return userHasLikesCard
+        return this._userHasLikesCard
     }
 
     deleteCard = () => {
@@ -24,34 +24,33 @@ export class Card {
     }
 
     _getTemplate() {
-        const template = this._cardTemplate.querySelector('.cards__item').cloneNode(true);
-        return template
+        this._template = this._cardTemplate.querySelector('.cards__item').cloneNode(true);
+        return this._template
     }
 
     _setEventListeners() {
-        const cardDeleteBtn = this._cardElement.querySelector('.cards__button-remove');
+        this._cardDeleteBtn = this._cardElement.querySelector('.cards__button-remove');
 
 
         this._cardLikeBtn.addEventListener('click', () => this._handleLikeClick(this._id));
-        cardDeleteBtn.addEventListener('click', () => this._handleDeleteClick(this._id));
+        this._cardDeleteBtn.addEventListener('click', () => this._handleDeleteClick(this._id));
         this._cardImg.addEventListener('click', () => this._handleCardClick(this._name, this._link));
     }
 
     _fillCard() {
-        const cardTitle = this._cardElement.querySelector('.cards__title');
+        this._cardTitle = this._cardElement.querySelector('.cards__title');
         this._cardImg = this._cardElement.querySelector('.cards__img');
         this._cardLikeBtn = this._cardElement.querySelector('.cards__button-like');
+        this._likeCountElement = this._cardElement.querySelector('.cards__like-count');
 
         this._cardImg.src = this._link;
         this._cardImg.alt = this._name;
-        cardTitle.textContent = this._name;
+        this._cardTitle.textContent = this._name;
     }
 
     setLikes(newLikes) {
         this._likes = newLikes
-        const likeCountElement = this._cardElement.querySelector('.cards__like-count');
-        likeCountElement.textContent = this._likes.length;
-
+        this._likeCountElement.textContent = this._likes.length;
 
         if (this.isLiked()) {
             this._fillLikeIcon()

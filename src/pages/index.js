@@ -21,16 +21,14 @@ import {api} from "../components/Api.js";
 
 let userId;
 
-api.getProfile()
-    .then(res => {
-        userInfo.setUserInfo(res.name, res.about)
-        userInfo.setUserAvatar(res.avatar)
-        userId = res._id
-    })
 
-api.getInitialCards()
-    .then(cardList => {
-        cardList.forEach(data => {
+Promise.all([api.getProfile(), api.getInitialCards()])
+    .then(([info, cards]) => {
+        userInfo.setUserInfo(info.name, info.about)
+        userInfo.setUserAvatar(info.avatar)
+        userId = info._id
+
+        cards.forEach(data => {
             const card = {
                 name: data.name,
                 link: data.link,
@@ -42,6 +40,10 @@ api.getInitialCards()
             section.addItem(createCard(card));
         })
     })
+    .catch(err => {
+        console.log(err)
+    });
+
 
 //Функция открыть попап редактирования профиля
 function openEditProfilePopup() {
@@ -62,6 +64,7 @@ function submitEditProfile(data) {
             userInfo.setUserInfo(name, aboutMe);
             editProfilePopup.close();
         })
+        .catch(console.log)
         .finally(() => {
             editProfilePopup.renderLoading(false)
         })
@@ -74,6 +77,7 @@ function submitEditAvatar(data) {
             userInfo.setUserAvatar(res.avatar);
             avatarPopup.close();
         })
+        .catch(console.log)
         .finally(() => avatarPopup.renderLoading(false))
 }
 
@@ -91,7 +95,7 @@ function openAddCardPopup() {
 }
 
 function submitAddCard(data) {
-    addCardPopup.renderLoading(true);
+    addCardPopup.renderLoading(true, 'Идет процесс создания...');
     api.addCard(data)
         .then(res => {
             const card = {
@@ -105,6 +109,7 @@ function submitAddCard(data) {
             section.addItem(createCard(card));
             addCardPopup.close();
         })
+        .catch(console.log)
         .finally(() => {
             addCardPopup.renderLoading(false)
         })
@@ -122,6 +127,7 @@ function handleDeleteClick(id, card) {
                 card.deleteCard();
                 confirmPopup.close();
             })
+            .catch(console.log)
     });
 }
 
@@ -131,11 +137,13 @@ function handleLikeCLick(id, card) {
             .then(res => {
                 card.setLikes(res.likes)
             })
+            .catch(console.log)
     } else {
         api.addLike(id)
             .then(res => {
                 card.setLikes(res.likes)
             })
+            .catch(console.log)
     }
 }
 
