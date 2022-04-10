@@ -10,7 +10,6 @@ class Api {
         })
             .then(res => res.ok ? res.json() : Promise.reject(res.status))
             .catch(console.log)
-
     }
 
     getInitialCards() {
@@ -34,13 +33,52 @@ class Api {
             .catch(console.log)
     }
 
-    addCard(name, link) {
+    addCard(data) {
         return fetch(`${this._baseUrl}/cards`, {
             method: "POST",
             headers: this._headers,
             body: JSON.stringify({
-                name,
-                link
+                name: data.name,
+                link: data.link
+            })
+        })
+            .then(res => res.ok ? res.json() : Promise.reject(res.status))
+            .catch(console.log)
+    }
+
+    deleteCard(id) {
+        return fetch(`${this._baseUrl}/cards/${id}`, {
+            method: "DELETE",
+            headers: this._headers,
+        })
+            .then(res => res.ok ? res.json() : Promise.reject(res.status))
+            .catch(console.log)
+    }
+
+    deleteLike(id) {
+        return fetch(`${this._baseUrl}/cards/${id}/likes`, {
+            method: "DELETE",
+            headers: this._headers,
+        })
+            .then(res => res.ok ? res.json() : Promise.reject(res.status))
+            .catch(console.log)
+    }
+
+    addLike(id) {
+        return fetch(`${this._baseUrl}/cards/${id}/likes`, {
+            method: "PUT",
+            headers: this._headers,
+        })
+            .then(res => res.ok ? res.json() : Promise.reject(res.status))
+            .catch(console.log)
+    }
+
+    editAvatar(data) {
+        return fetch(`${this._baseUrl}/users/me/avatar`, {
+            method: "PATCH",
+            headers: this._headers,
+            body: JSON.stringify({
+              avatar: data.linkAvatar
             })
         })
             .then(res => res.ok ? res.json() : Promise.reject(res.status))

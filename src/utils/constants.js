@@ -40,3 +40,5 @@ export const formEditProfile = document.querySelector('.popup__form_edit-profile
 export const addBtn = document.querySelector('.profile__button-add');
 export const formAddCard = document.querySelector('.popup__form_add-card');
 export const cardItems = document.querySelector('.cards__items');
+export const avatar = document.querySelector('.profile__avatar');
+export const formEditAvatar = document.querySelector('.popup__form_edit-avatar');

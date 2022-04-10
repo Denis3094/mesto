@@ -18,7 +18,9 @@
     <main class="main">
         <section class="profile">
             <div class="profile__wrap">
-                <img class="profile__avatar" src="<%=require('./images/avatar.jpg')%>" alt="аватар">
+                <div class="profile__avatar">
+                    <button class="profile__avatar_edit-btn"></button>
+                </div>
                 <div class="profile__info">
                     <h1 class="profile__name"></h1>
                     <button class="button profile__button-edit" type="button" aria-label="редактировать"></button>
@@ -56,6 +58,21 @@
         </div>
     </section>
 
+    <section class="popup popup_edit-avatar">
+        <div class="popup__container ">
+            <button class="button popup__close" type="button" aria-label="закрыть">
+                <img class="popup__close-img" src="<%=require('./images/close.svg')%>" alt="закрыть попап">
+            </button>
+            <h2 class="popup__title">Обновить аватар</h2>
+            <form class="popup__form popup__form_edit-avatar" name="avatar" method="post" novalidate>
+            <input id="linkAvatar" type="url" class="popup__input popup__input_type_link" placeholder="Ссылка на картинку"
+                   name="linkAvatar" required>
+                <span id="error-linkAvatar" class="popup__error"></span>
+                <button class="popup__button popup__button_edit-avatar" type="submit" aria-label="сохранить">Сохранить</button>
+            </form>
+        </div>
+    </section>
+
     <section class="popup popup_add-card">
         <div class="popup__container">
             <button class="button popup__close popup__close_add-card" type="button" aria-label="закрыть">
@@ -79,8 +96,8 @@
                 <img class="popup__close-img" src="<%=require('./images/close.svg')%>" alt="закрыть попап">
             </button>
             <h2 class="popup__title">Вы уверены?</h2>
-            <form class="popup__form" name="confirm" method="post" novalidate>
-                <button class="popup__button" type="submit" aria-label="подтвердить">Да</button>
+            <form class="popup__form popup__form_delete-confirm" name="confirm" method="post" novalidate>
+                <button class="popup__button popup__button_delete-confirm" type="submit" aria-label="подтвердить">Да</button>
             </form>
         </div>
     </section>
@@ -102,8 +119,10 @@
         <img class="cards__img" alt="">
         <div class="cards__desc">
             <h2 class="cards__title"></h2>
-            <button class="button cards__button-like" type="button" aria-label="нравится"></button>
-<!--            <span class="cards__like-count"></span>-->
+            <div class="like-wrapper">
+                <button class="button cards__button-like" type="button" aria-label="нравится"></button>
+                <span class="cards__like-count"></span>
+            </div>
         </div>
     </li>
 </template>
