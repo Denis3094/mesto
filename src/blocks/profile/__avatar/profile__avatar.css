@@ -27,7 +27,7 @@
 	background-color: rgba(0, 0, 0, .8);
 }
 
-.profile__avatar:hover .profile__avatar_edit-btn {
+.profile__avatar:hover .profile__avatar-edit-btn {
 	visibility: visible;
 	opacity: 1;
 	transition: opacity .4s ease-in-out;

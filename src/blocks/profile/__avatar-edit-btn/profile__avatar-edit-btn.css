@@ -1,5 +1,5 @@
-.profile__avatar_edit-btn {
-    background-image: url(../../../../images/pen.svg);
+.profile__avatar-edit-btn {
+    background-image: url(../../../images/pen.svg);
     width: 26px;
     height: 26px;
     background-color: rgba(0, 0, 0, 0);
