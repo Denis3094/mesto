@@ -1,9 +1,8 @@
 .profile__avatar {
 	/*background-image: url(../../../images/avatar.jpg);*/
 	background-size: cover;
-	max-width: 120px;
+	width: 120px;
 	height: 120px;
-	display: block;
 	position: relative;
 	border-radius: 50%;
 	z-index: 0;
